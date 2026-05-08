@@ -4,7 +4,7 @@ import criarFicha, {
   buscaFicha,
   deletarFicha,
   atualizarFicha,
-} from "../config.js";
+} from "../models/fichaModel.js";
 
 const router = Router();
 

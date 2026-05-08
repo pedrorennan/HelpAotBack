@@ -1,4 +1,4 @@
-import { pool } from "./database/connection.js";
+import { pool } from "../database/connection.js";
 
 export default async function criarFicha(nome, classe) {
   const queryText =
