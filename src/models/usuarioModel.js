@@ -25,3 +25,37 @@ export async function buscarUsuario(usuario) {
     throw err;
   }
 }
+
+export async function buscarUsuarios() {
+  const queryText = 'SELECT * FROM "Usuarios"';
+  try {
+    const res = await pool.query(queryText);
+
+    return res.rows;
+  } catch (err) {
+    console.error("Erro:", err);
+    throw err;
+  }
+}
+
+export async function buscarUsuarioId(id) {
+  const queryText = 'SELECT * FROM "Usuarios" WHERE "id" = $1';
+  try {
+    const res = await pool.query(queryText, [id]);
+
+    return res.rows[0];
+  } catch (err) {
+    console.error("Erro:", err);
+    throw err;
+  }
+}
+
+export async function deletarUsuario(id) {
+  try {
+    const res = await pool.query('DELETE FROM "Usuarios" WHERE id = $1', [id]);
+    return res.rowsCount;
+  } catch (err) {
+    console.error("Erro ao deletar ficha: ", err);
+    throw err;
+  }
+}
